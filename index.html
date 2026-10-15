@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1>Tic Tac Toe</h1>
+
+    <div class="controls">
+      <label for="mode">Mode</label>
+      <select id="mode">
+        <option value="pvp">2 Players</option>
+        <option value="easy">vs Computer (Easy)</option>
+        <option value="hard" selected>vs Computer (Unbeatable)</option>
+      </select>
+    </div>
+
+    <div class="scoreboard">
+      <div class="score x"><span class="label">X</span><span id="score-x">0</span></div>
+      <div class="score draw"><span class="label">Draws</span><span id="score-draw">0</span></div>
+      <div class="score o"><span class="label">O</span><span id="score-o">0</span></div>
+    </div>
+
+    <p id="status" class="status" aria-live="polite"></p>
+
+    <div id="board" class="board" role="grid" aria-label="Tic Tac Toe board"></div>
+
+    <div class="actions">
+      <button id="restart">New Round</button>
+      <button id="reset-scores" class="secondary">Reset Scores</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
