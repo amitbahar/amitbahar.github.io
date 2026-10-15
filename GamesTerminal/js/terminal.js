@@ -21,7 +21,7 @@
  *   term.button(label, onClick?, className?) create a terminal-styled button
  *   term.commandLink(name)                   clickable command name that runs it
  *   term.launch(factory)                     start an interactive app
- *   term.clear()                             erase all output (the title banner stays)
+ *   term.clear()                             erase all output (the header stays)
  *
  * Interactive apps (games) take over the keyboard until they exit:
  *
@@ -151,7 +151,7 @@
     scrollToBottom();
   }
 
-  // The banner sits outside #output, so it survives a clear.
+  // The header (banner + welcome) sits outside #output, so it survives a clear.
   function clear() {
     output.replaceChildren();
   }
@@ -296,12 +296,15 @@
       if (!window.getSelection().toString()) focusInput();
     });
 
-    print('Welcome to amitbahar.github.io', 'bright');
-    print('');
+    // Welcome text goes in the header with the banner, so `clear` keeps it.
     const intro = div('line');
     intro.append('Type ', commandLink('help'), ' and press Enter to see the available commands.');
-    append(intro);
-    print('');
+    document.getElementById('header').append(
+      div('line bright', 'Welcome to amitbahar.github.io'),
+      div('line'),
+      intro,
+      div('line'),
+    );
 
     renderInput();
     focusInput();
