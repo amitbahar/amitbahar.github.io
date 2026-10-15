@@ -71,6 +71,7 @@ body {
 .banner {
   margin: 0 0 4px;
   font: inherit;
+  font-size: min(1em, 2vw); /* 76 columns wide: shrink to fit phones */
   line-height: 1.2;
   color: var(--fg-bright);
   text-shadow: 0 0 2px rgba(51, 255, 102, 0.4);
@@ -193,7 +194,6 @@ body {
 @media (max-width: 600px) {
   body { font-size: 14px; }
   .screen { padding: 12px 12px 32px; }
-  .banner { font-size: 9px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

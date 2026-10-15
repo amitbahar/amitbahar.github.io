@@ -1,6 +1,6 @@
 # amitbahar.github.io
 
-A retro terminal homepage, built with plain HTML, CSS and JavaScript (no server, no build step, no dependencies).
+Amit Bahar & Yaniv Hayoun's retro terminal homepage, built with plain HTML, CSS and JavaScript (no server, no build step, no dependencies).
 
 Live at https://amitbahar.github.io/. To run it locally, open `index.html` in a browser.
 
@@ -13,6 +13,9 @@ js/terminal.js          terminal core: command registry + shell
 js/commands/help.js     the `help` command
 games/tictactoe/        `tic tac toe` command (JS + CSS)
 games/snake/            `snake` command (JS + CSS)
+games/2048/             `2048` command
+games/hangman/          `hangman` command
+games/guess/            `guess` command (guess the number)
 ```
 
 ## Adding a command

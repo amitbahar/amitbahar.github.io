@@ -1,0 +1,18 @@
+.guess-log { margin: 8px 0 4px; }
+
+.guess-entry { color: var(--fg-bright); }
+
+/* Number pad: only on devices without a fine pointer. */
+.guess-pad {
+  display: none;
+  grid-template-columns: repeat(3, 56px);
+  grid-auto-rows: 44px;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.guess-pad .term-btn { font-size: 18px; padding: 0; }
+
+@media (pointer: coarse) {
+  .guess-pad { display: grid; }
+}

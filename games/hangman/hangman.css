@@ -1,0 +1,42 @@
+.hangman-art {
+  margin: 4px 0 8px;
+  font: inherit;
+  line-height: 1.2;
+}
+
+.hangman-art.lost { color: var(--error); text-shadow: 0 0 4px rgba(255, 95, 86, 0.5); }
+
+.hangman-word {
+  font-size: 1.5em;
+  letter-spacing: 0.1em;
+  color: var(--fg-bright);
+  margin-bottom: 4px;
+}
+
+.hangman-status { min-height: 1.45em; margin-top: 4px; }
+
+.hangman-keys {
+  display: grid;
+  grid-template-columns: repeat(13, minmax(0, 2.2em));
+  gap: 4px;
+  margin: 10px 0 4px;
+}
+
+.hangman-key { padding: 4px 0; }
+
+.hangman-key.used {
+  color: var(--fg-faint);
+  border-color: var(--fg-faint);
+  text-shadow: none;
+  text-decoration: line-through;
+}
+
+.hangman-key.used.hit {
+  color: var(--fg-bright);
+  border-color: var(--fg);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .hangman-keys { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+}
