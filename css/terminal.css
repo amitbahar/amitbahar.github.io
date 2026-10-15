@@ -1,0 +1,201 @@
+/* Classic green phosphor terminal. */
+:root {
+  --bg: #000;
+  --fg: #33ff66;
+  --fg-bright: #b4ffc8;
+  --fg-dim: #1f9940;
+  --fg-faint: #0f4d20;
+  --amber: #ffb000;
+  --error: #ff5f56;
+  --glow: 0 0 4px rgba(51, 255, 102, 0.55);
+  --font: "DejaVu Sans Mono", "Courier New", Courier, ui-monospace, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+}
+
+body {
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.45;
+  text-shadow: var(--glow);
+}
+
+/* Full-screen CRT with scanlines and a soft vignette. */
+.crt {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  background: radial-gradient(ellipse at center, #031a08 0%, #000 75%);
+  overflow: hidden;
+}
+
+.crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 2px,
+    rgba(0, 0, 0, 0.25) 3px
+  );
+}
+
+.screen {
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px 24px 40px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--fg-dim) transparent;
+}
+
+.line {
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 1.45em;
+}
+
+.muted { color: var(--fg-dim); }
+.bright { color: var(--fg-bright); }
+.error { color: var(--error); text-shadow: 0 0 4px rgba(255, 95, 86, 0.5); }
+.amber { color: var(--amber); text-shadow: 0 0 4px rgba(255, 176, 0, 0.5); }
+
+.banner {
+  margin: 0 0 4px;
+  font: inherit;
+  line-height: 1.2;
+  color: var(--fg-bright);
+  text-shadow: 0 0 2px rgba(51, 255, 102, 0.4);
+  white-space: pre;
+  overflow: hidden;
+}
+
+/* Prompt + input. The real <input> is invisible; we draw the text and a block cursor. */
+.input-line {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
+  word-break: break-all;
+  cursor: text;
+}
+
+.input-line[hidden] { display: none; }
+
+.prompt { color: var(--fg-bright); margin-right: 1ch; white-space: pre; }
+
+.typed { flex: 1; min-width: 0; }
+
+.cursor {
+  background: var(--fg);
+  color: var(--bg);
+  text-shadow: none;
+  box-shadow: var(--glow);
+  animation: blink 1.06s steps(1) infinite;
+}
+
+.input-line:not(.focused) .cursor {
+  background: transparent;
+  color: inherit;
+  outline: 1px solid var(--fg);
+  outline-offset: -1px;
+  animation: none;
+}
+
+@keyframes blink { 50% { background: transparent; color: inherit; box-shadow: none; } }
+
+.input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-size: 16px; /* prevents iOS zoom on focus */
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+}
+
+/* Buttons rendered as terminal text. */
+.term-btn {
+  font: inherit;
+  color: var(--fg);
+  text-shadow: inherit;
+  background: transparent;
+  border: 1px solid var(--fg-dim);
+  border-radius: 0;
+  padding: 1px 8px;
+  cursor: pointer;
+}
+
+.term-btn:hover { background: var(--fg); color: var(--bg); text-shadow: none; }
+
+.cmd-link {
+  font: inherit;
+  color: var(--fg-bright);
+  text-shadow: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.cmd-link:hover { background: var(--fg); color: var(--bg); text-shadow: none; }
+
+.help-table {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 2px 3ch;
+  margin: 4px 0 4px 2ch;
+}
+
+/* Interactive apps (games). */
+.app {
+  margin: 6px 0 12px;
+  padding: 12px 14px;
+  border: 1px dashed var(--fg-dim);
+  max-width: 560px;
+}
+
+.app.app-done { opacity: 0.5; }
+
+.app-title {
+  color: var(--fg-bright);
+  letter-spacing: 0.3em;
+  margin-bottom: 8px;
+}
+
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 6px;
+}
+
+.menu-row { margin: 4px 0; }
+
+.hint { font-size: 0.85em; }
+
+.noscript { color: var(--fg); padding: 24px; }
+
+@media (max-width: 600px) {
+  body { font-size: 14px; }
+  .screen { padding: 12px 12px 32px; }
+  .banner { font-size: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
+}

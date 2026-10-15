@@ -1,0 +1,53 @@
+.snake-board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  width: min(100%, 480px);
+  margin: 8px 0;
+  border: 1px solid var(--fg);
+  box-shadow: var(--glow), inset 0 0 12px rgba(51, 255, 102, 0.15);
+  touch-action: none;
+  user-select: none;
+}
+
+.snake-cell { min-width: 0; }
+
+.snake-cell.body {
+  background: var(--fg-dim);
+  box-shadow: inset 0 0 0 1px var(--bg);
+}
+
+.snake-cell.head {
+  background: var(--fg-bright);
+  box-shadow: inset 0 0 0 1px var(--bg), 0 0 6px var(--fg);
+}
+
+.snake-cell.food {
+  background: var(--amber);
+  border-radius: 50%;
+  transform: scale(0.7);
+  box-shadow: 0 0 8px var(--amber);
+}
+
+.snake-board.crashed { border-color: var(--error); }
+.snake-board.crashed .head { background: var(--error); box-shadow: 0 0 8px var(--error); }
+
+.snake-status { min-height: 1.45em; }
+
+/* Touch arrows: only on devices without a fine pointer. */
+.snake-pad {
+  display: none;
+  grid-template-columns: repeat(3, 56px);
+  grid-template-rows: repeat(2, 48px);
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.snake-pad .term-btn { font-size: 20px; padding: 0; touch-action: none; }
+.snake-pad .pad-up { grid-column: 2; grid-row: 1; }
+.snake-pad .pad-left { grid-column: 1; grid-row: 2; }
+.snake-pad .pad-down { grid-column: 2; grid-row: 2; }
+.snake-pad .pad-right { grid-column: 3; grid-row: 2; }
+
+@media (pointer: coarse) {
+  .snake-pad { display: grid; }
+}

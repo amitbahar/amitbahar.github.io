@@ -1,0 +1,32 @@
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-auto-rows: 64px;
+  gap: 4px;
+  margin: 10px 0;
+}
+
+.ttt-cell {
+  padding: 0;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.ttt-cell.empty {
+  font-size: 13px;
+  color: var(--fg-faint);
+  text-shadow: none;
+}
+
+.ttt-cell.o { color: var(--amber); text-shadow: 0 0 6px rgba(255, 176, 0, 0.6); }
+.ttt-cell.x { color: var(--fg-bright); text-shadow: 0 0 6px rgba(51, 255, 102, 0.8); }
+
+.ttt-cell.win {
+  background: var(--fg);
+  color: var(--bg);
+  text-shadow: none;
+}
+
+.ttt-cell.cursor { outline: 2px solid var(--fg-bright); outline-offset: -4px; }
+
+.ttt-status { min-height: 1.45em; }
