@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Amit Bahar &amp; Yaniv Hayoun: a retro terminal with games.">
+  <title>Amit Bahar &amp; Yaniv Hayoun — terminal</title>
+  <link rel="stylesheet" href="css/terminal.css">
+  <!-- Game styles: each game lives in its own folder under games/ -->
+  <link rel="stylesheet" href="games/tictactoe/tictactoe.css">
+  <link rel="stylesheet" href="games/snake/snake.css">
+  <link rel="stylesheet" href="games/2048/2048.css">
+  <link rel="stylesheet" href="games/hangman/hangman.css">
+  <link rel="stylesheet" href="games/guess/guess.css">
+</head>
+<body>
+  <div class="crt">
+    <div id="screen" class="screen">
+      <div id="output" class="output"><pre class="banner" aria-label="amitbahar, Yaniv Hayoun">                   _  _    _             _
+  __ _  _ __ ___  (_)| |_ | |__    __ _ | |__    __ _  _ __
+ / _` || &#x27;_ ` _ \ | || __|| &#x27;_ \  / _` || &#x27;_ \  / _` || &#x27;__|
+| (_| || | | | | || || |_ | |_) || (_| || | | || (_| || |
+ \__,_||_| |_| |_||_| \__||_.__/  \__,_||_| |_| \__,_||_|
+
+                      _            _
+ _   _   __ _  _ __  (_)__   __   | |__    __ _  _   _   ___   _   _  _ __
+| | | | / _` || &#x27;_ \ | |\ \ / /   | &#x27;_ \  / _` || | | | / _ \ | | | || &#x27;_ \
+| |_| || (_| || | | || | \ V /    | | | || (_| || |_| || (_) || |_| || | | |
+ \__, | \__,_||_| |_||_|  \_/     |_| |_| \__,_| \__, | \___/  \__,_||_| |_|
+ |___/                                           |___/</pre></div>
+      <div id="input-line" class="input-line">
+        <span class="prompt">guest@amitbahar:~$</span>
+        <span class="typed" aria-hidden="true"><span id="typed-before"></span><span id="cursor" class="cursor"> </span><span id="typed-after"></span></span>
+        <input id="input" class="input" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Terminal command">
+      </div>
+    </div>
+  </div>
+  <noscript><p class="noscript">This terminal needs JavaScript to run.</p></noscript>
+
+  <!-- Terminal core -->
+  <script src="js/terminal.js"></script>
+
+  <!-- Commands: to add a new one, add its script here (see README.md) -->
+  <script src="games/tictactoe/tictactoe.js"></script>
+  <script src="games/snake/snake.js"></script>
+  <script src="games/2048/2048.js"></script>
+  <script src="games/hangman/hangman.js"></script>
+  <script src="games/guess/guess.js"></script>
+  <script src="js/commands/clear.js"></script>
+  <script src="js/commands/help.js"></script>
+</body>
+</html>

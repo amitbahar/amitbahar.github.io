@@ -21,6 +21,7 @@
  *   term.button(label, onClick?, className?) create a terminal-styled button
  *   term.commandLink(name)                   clickable command name that runs it
  *   term.launch(factory)                     start an interactive app
+ *   term.clear()                             erase everything on the screen
  *
  * Interactive apps (games) take over the keyboard until they exit:
  *
@@ -150,7 +151,11 @@
     scrollToBottom();
   }
 
-  const term = { print, append, div, button, commandLink, launch };
+  function clear() {
+    output.replaceChildren();
+  }
+
+  const term = { print, append, div, button, commandLink, launch, clear };
 
   /* ---------- command execution ---------- */
 
